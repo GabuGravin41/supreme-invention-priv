@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Sensor Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body >
+    <!-- Back Button -->
+    <a href="javascript:history.back()" 
+        onclick="if(history.length <= 1) { window.location.href='index.html'; }" 
+        class="absolute top-5 left-5 text-green-600 border-2 teal-300 px-4 py-2 rounded hover:bg-green-600 hover:text-white transition">
+        Back
+    </a>
+
+    <!-- Sensor Data Section -->
+    <main class="flex flex-col justify-center items-center flex-grow">
+        <div class="text-center max-w-6xl">
+            <h1 class="text-3xl md:text-4xl text-green-600 mb-10 font-bold">Sensor Data</h1>
+            <div class="flex flex-wrap gap-10 justify-center">
+                <!-- Temperature -->
+                <div id="temperature-gauge" class="text-center p-10 border teal-600 rounded-lg w-80 shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 group relative overflow-hidden">
+                    <h2 class="text-2xl font-semibold text-green-700 mb-4">Temperature</h2>
+                    <div class="text-3xl font-bold text-teal-600">0.0 °C</div>
+                </div>
+                
+                <!-- Humidity -->
+                <div id="humidity-gauge" class="text-center p-10 border teal-600 rounded-lg w-80 shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 group relative overflow-hidden">
+                    <h2 class="text-2xl font-semibold text-green-700 mb-4">Humidity</h2>
+                    <div class="text-3xl font-bold text-teal-600">0.0 %</div>
+                </div>
+                
+                <!-- Soil Moisture -->
+                <div id="s-moisture-gauge" class="text-center p-10 border teal-600 rounded-lg w-80 shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 group relative overflow-hidden">
+                    <h2 class="text-2xl font-semibold text-green-700 mb-4">Soil Moisture</h2>
+                    <div class="text-3xl font-bold text-teal-600">0.0 %</div>
+                </div>
+                
+                <!-- Water Level -->
+                <div id="waterlevel-gauge" class="text-center p-10 border teal-600 rounded-lg w-80 shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 group relative overflow-hidden">
+                    <h2 class="text-2xl font-semibold text-green-700 mb-4">Water Level</h2>
+                    <div class="text-3xl font-bold text-teal-600">0.0 mm</div>
+                </div>
+
+                <!-- pH -->
+                <div id="ph-gauge" class="text-center p-10 border teal-600 rounded-lg w-80 shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 group relative overflow-hidden">
+                    <h2 class="text-2xl font-semibold text-green-700 mb-4">pH</h2>
+                    <div class="text-3xl font-bold text-teal-600">0.0</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Embedded JavaScript for Simulation -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Utility function for generating random values
+            function getRandomValue(min, max) {
+                return (Math.random() * (max - min) + min).toFixed(1);
+            }
+
+            // Function to update gauges
+            function updateSensorData() {
+                const data = {
+                    temperature: getRandomValue(18,27), 
+                    humidity: getRandomValue(30, 90),    
+                    soilMoisture: getRandomValue(10, 60), 
+                    waterLevel: getRandomValue(5, 10), 
+                    pH: getRandomValue(6.0, 8.5)      
+                };
+
+                // Update DOM
+                document.getElementById('temperature-gauge').querySelector("div.text-3xl").textContent = `${data.temperature} °C`;
+                document.getElementById('humidity-gauge').querySelector("div.text-3xl").textContent = `${data.humidity} %`;
+                document.getElementById('s-moisture-gauge').querySelector("div.text-3xl").textContent = `${data.soilMoisture} %`;
+                document.getElementById('waterlevel-gauge').querySelector("div.text-3xl").textContent = `${data.waterLevel} mm`;
+                document.getElementById('ph-gauge').querySelector("div.text-3xl").textContent = `${data.pH}`;
+            }
+
+            // Update every second
+            setInterval(updateSensorData, 1000);
+        });
+    </script>
+</body>
+</html>
