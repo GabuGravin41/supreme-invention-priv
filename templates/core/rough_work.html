@@ -1,0 +1,48 @@
+{% extends 'dashboard-base.html' %}
+{% load static %}
+{% load tailwind_filters %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+  Sensor Data
+{% endblock %}
+
+{% block main %}
+<main class="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-300 via-blue-500 to-purple-600 text-white font-poppins">
+  <div class="dashboard max-w-2xl bg-black/50 rounded-lg shadow-xl p-5 text-center">
+    <h1 class="text-2xl font-bold mb-5 text-yellow-400 text-shadow">
+      Sensor Data
+    </h1>
+    <div class="gauge-container flex flex-wrap gap-5 justify-center">
+      <!-- Gauge 1 -->
+      <div class="gauge bg-white rounded-lg shadow-md p-5 text-center text-gray-800 w-[180px] transition-transform transform hover:scale-105 hover:shadow-lg">
+        <h2 class="text-lg font-semibold text-blue-400 mb-2">Temperature</h2>
+        <div class="value bg-gradient-to-br from-gray-400 to-pink-300 rounded-md p-3 mt-3 text-lg font-bold text-white text-shadow animate-pulse">
+          0.0 °C
+        </div>
+      </div>
+      <!-- Gauge 2 -->
+      <div class="gauge bg-white rounded-lg shadow-md p-5 text-center text-gray-800 w-[180px] transition-transform transform hover:scale-105 hover:shadow-lg">
+        <h2 class="text-lg font-semibold text-blue-400 mb-2">Humidity</h2>
+        <div class="value bg-gradient-to-br from-gray-400 to-pink-300 rounded-md p-3 mt-3 text-lg font-bold text-white text-shadow animate-pulse">
+          0.0 %
+        </div>
+      </div>
+      <!-- Gauge 3 -->
+      <div class="gauge bg-white rounded-lg shadow-md p-5 text-center text-gray-800 w-[180px] transition-transform transform hover:scale-105 hover:shadow-lg">
+        <h2 class="text-lg font-semibold text-blue-400 mb-2">Soil Moisture</h2>
+        <div class="value bg-gradient-to-br from-gray-400 to-pink-300 rounded-md p-3 mt-3 text-lg font-bold text-white text-shadow animate-pulse">
+          0.0 %
+        </div>
+      </div>
+      <!-- Gauge 4 -->
+      <div class="gauge bg-white rounded-lg shadow-md p-5 text-center text-gray-800 w-[180px] transition-transform transform hover:scale-105 hover:shadow-lg">
+        <h2 class="text-lg font-semibold text-blue-400 mb-2">Water Level</h2>
+        <div class="value bg-gradient-to-br from-gray-400 to-pink-300 rounded-md p-3 mt-3 text-lg font-bold text-white text-shadow animate-pulse">
+          0.0 %
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
